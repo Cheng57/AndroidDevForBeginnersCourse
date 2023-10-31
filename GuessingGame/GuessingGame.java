@@ -52,6 +52,8 @@ public class GuessingGame{
 				System.out.println("The guessing number is " + randNum);
 			}
 		}
+
+		//close the Scanner when finished (optional but good practice)
 		scanner.close();
 	}
 }
