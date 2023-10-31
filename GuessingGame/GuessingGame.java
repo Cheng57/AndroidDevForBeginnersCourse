@@ -53,7 +53,7 @@ public class GuessingGame{
 			}
 		}
 
-		//close the Scanner when finished (optional but good practice)
+		//close the Scanner when finished (optional but good practice).
 		scanner.close();
 	}
 }
