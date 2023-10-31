@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 EditText edtTxtFirstName = findViewById(R.id.edtFirstName);
                 TextView txtFirstName = findViewById(R.id.txtFirstName);
                 txtFirstName.setText("FirstName: " + edtTxtFirstName.getText().toString());
@@ -32,20 +31,5 @@ public class MainActivity extends AppCompatActivity {
                 txtEmail.setText("Email: " + edtTxtEmail.getText().toString());
             }
         });
-
     }
-
-/*    public void onBtnClick(View view){
-        EditText edtFirstName = findViewById(R.id.edtFirstName);
-        EditText edtLastName = findViewById(R.id.edtLastName);
-        EditText edtEmail = findViewById(R.id.edtEmail);
-
-        TextView txtFirstName = findViewById(R.id.txtFirstName);
-        TextView txtLastName = findViewById(R.id.txtLastName);
-        TextView txtEmail = findViewById(R.id.txtEmail);
-
-        txtFirstName.setText("FirstName: " + edtFirstName.getText().toString());
-        txtLastName.setText("LastName: " + edtLastName.getText().toString());
-        txtEmail.setText("Email: " + edtEmail.getText().toString());
-    }*/
 }
