@@ -1,47 +1,57 @@
 import java.util.*;
 
-class GuessingGame{
+public class GuessingGame{
 	public static void main(String[] args){
-		System.out.println("Welcom to GuessingGame!");
+		System.out.println("Welcome!");
 
-		Scanner scannerName = new Scanner(System.in);
-		System.out.print("Enter username: ");
+		//only create a single 'Scanner' object and reuse it.
+		Scanner scanner = new Scanner(System.in);
 
-		String username = scannerName.nextLine();
-		System.out.println("Hello " + username);
+		System.out.println("Please enter your name:");
+		String userName = scanner.nextLine();
+		System.out.println("Hello " + userName);
 
-		Scanner scannerYesOrNo = new Scanner(System.in);
-		System.out.print("Are you ready to start? (Y/N): ");
+		String yesOrNo = "n";
 
-		String YesOrNo = scannerYesOrNo.nextLine();
-		System.out.println(YesOrNo);
+		//use equals method to compare the contents of the strings instead of "=="
+		//because '==' checks for reference equality, not content equality.
+		while (!yesOrNo.equals("y")){
+			System.out.println("Are you ready? y/n");
+			yesOrNo = scanner.nextLine().toLowerCase();
+			if (!yesOrNo.equals("n") && !yesOrNo.equals("y")){
+				System.out.println("Invalid input");
+			}
+		}
+		if (yesOrNo.equals("y")){
+			Random rand = new Random();
+			int randNum = rand.nextInt(10) + 1;
 
-		if (YesOrNo.equals("Y")){
-			Random randomNumber = new Random();
-			int guessingNumber = randomNumber.nextInt(10);
-			int count = 0;
+			int counter = 0;
+			while (counter < 5){
+				System.out.println("Please enter a guessing number between 1 and 10:");
+				int userNum = scanner.nextInt();
 
+				if (userNum > randNum && counter < 4){
+					System.out.println("Guess a lower number");
+				}
 
-			for (int i = 0; i < 5; i++){
-				Scanner scannerUserInputNumber = new Scanner(System.in);
-				System.out.print("Enter your number: ");
+				if(userNum < randNum && counter < 4){
+					System.out.println("Guess a higher number");
+				}
 
-				int userInputNumber = scannerUserInputNumber.nextInt();
-
-				if (userInputNumber > guessingNumber){
-					System.out.println("Guess lower");
-				} else if (userInputNumber < guessingNumber){
-					System.out.println("Guess higher");
-				} else{
-					System.out.println("You got it!");
+				if (userNum == randNum){
+					System.out.println("Congrats! You got it.");
 					break;
 				}
 
-				count++;
+				counter++;
 			}
-			if (count == 5){
-				System.out.println("Game over");
+
+			if (counter == 5) {
+				System.out.println("Game Over");
+				System.out.println("The guessing number is " + randNum);
 			}
 		}
+		scanner.close();
 	}
 }
